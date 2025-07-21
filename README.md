@@ -1,1 +1,1 @@
-Matchng Card Game using HTML,CSS,JavaJavascript
+Matchng Card Game using HTML,CSS,Javascript
