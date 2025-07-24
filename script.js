@@ -5,7 +5,7 @@ const gameCard = [...images, ...images]
 gameCard.sort(() => 0.5 - Math.random())
 
 const gameBox = document.querySelector('.gamebox')
-let firstCard, secondCard ;
+let firstCard, secondCard;
 let lockBoard = false
 let matchPair = 0
 
@@ -32,7 +32,7 @@ function setUpGame() {
 }
 
 function flipCard() {
-    if (lockBoard) return 
+    if (lockBoard) return
     if (this === firstCard) {
         return
     }
@@ -52,7 +52,7 @@ function checkMatch() {
     let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
     if (isMatch) {
-       disableCard()
+        disableCard()
     } else {
         CardUnFlip()
     }
@@ -63,18 +63,23 @@ function disableCard() {
     secondCard.removeEventListener('click', flipCard)
 
     matchPair++
-    if (matchPair === gameCard.length) {
-        document.getElementById('massage').textContent = '🎊 You Win game'
+
+    if (matchPair === gameCard.length / 2) {
+        setTimeout(() => {
+            alert("You Win Game");
+             location.reload()
+        }, 400)
     }
     resetGame()
+
 }
 
 function CardUnFlip() {
     setTimeout(() => {
         firstCard.classList.remove('flip')
         secondCard.classList.remove('flip')
-         resetGame()
-    },1000);
+        resetGame()
+    }, 500);
 
 }
 function resetGame() {
